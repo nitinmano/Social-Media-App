@@ -16,12 +16,8 @@ function MessageSender() {
       <div className="messageSender__top">
         <Avatar />
         <form>
-          <input
-            className="messageSender__input"
-            placeholder={"Tweet!!"}
-            type="text"
-          />
-          <input placeholder="image URL {optional}" />
+          <input className="messageSender__input" placeholder={"Tweet!!"} />
+          <input className="messageSender__image" placeholder="image URL {optional}" />
           <button onClick={handleSubmit} type="submit">
             Hidden submit
           </button>
@@ -32,11 +28,15 @@ function MessageSender() {
         <div className="messageSender__option">
           <VideoCallIcon style={{ color: "red" }} />
           <h3>Live Video</h3>
+        </div>
+        <div className="messageSender__option">
           <PhotoLibraryIcon style={{ color: "green" }} />
           <h3>Photo/Video</h3>
+        </div>
+        <div className="messageSender__option">
           <InsertEmoticonIcon style={{ color: "orange" }} />
           <h3>Feeling/Activity</h3>
-        </div>
+          </div>
       </div>
     </div>
   );
