@@ -4,7 +4,7 @@ import Sidebar from "./sidebar";
 import Feed from "./Feed";
 import Login from "./Login";
 function App() {
-  const user="Nitin";
+  const user="null";
   return (
     // BEM naming convention
     <div className="app">

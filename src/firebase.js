@@ -22,4 +22,3 @@ export { auth, provider };
 export default db;
 
 
-
