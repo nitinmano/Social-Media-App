@@ -34,7 +34,7 @@ function Header() {
       <div className="header___right">
         <div className="header___info">
           <Avatar />
-          <h4>NMPro</h4>
+          <h4>Nitin</h4>
         </div>
 
         <IconButton>

@@ -4,7 +4,6 @@ import Avatar from "@mui/material/Avatar";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { ExpandMoreOutlined } from "@mui/icons-material";
 
 function Post({ profilePic, image, username, timestamp, message }) {

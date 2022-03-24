@@ -1,0 +1,40 @@
+.login {
+  background: #ada996; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.login > button {
+  width: 300px;
+  background-color: #c82336;
+  color: #eff2f5;
+  font-weight: 800;
+}
+.login > button:hover {
+  background-color: white;
+  color: #c82336;
+}
+.login > div > img {
+  object-fit: contain;
+  height: 150px;
+}
+
+.login > div {
+  display: flex;
+  flex-direction: column;
+}
