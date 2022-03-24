@@ -10,31 +10,39 @@ import ForumIcon from "@mui/icons-material/Forum";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SearchIcon from "@mui/icons-material/Search";
+import { useStateValue } from "./StateProvider";
+
 
 function Header() {
+
+  const [{user}, dispatch] = useStateValue();
+
+
+
+
   return (
     <div className="header">
-      <div className="header___left">
+      <div className="header__left">
         <img src={logo} alt="logo" />
-        <div className="header___input">
+        <div className="header__input">
           <SearchIcon />
           <input type="text" placeholder="Search" />
         </div>
       </div>
 
-      <div className="header___center">
-        <div className="header___option header___option--active">
+      <div className="header__center">
+        <div className="header__option header___option--active">
           <HomeIcon fontSize="large" />
         </div>
-        <div className="header___option">
+        <div className="header__option">
           <FlagIcon fontSize="large" />
         </div>
       </div>
 
-      <div className="header___right">
-        <div className="header___info">
-          <Avatar />
-          <h4>Nitin</h4>
+      <div className="header__right">
+        <div className="header__info">
+          <Avatar src={user.photoURL}/>
+          <h4>{user.displayName}</h4>
         </div>
 
         <IconButton>
