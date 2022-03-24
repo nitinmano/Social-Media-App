@@ -25,7 +25,7 @@ function Feed() {
         />
         <Post
         profilePic="https://avatars2.githubusercontent.com/u/17098281?s=400&u=f9b8f8c8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8&v=4"
-        message="Hello, so I am a software engineer and I am learning React.js. I am looking forward to see what you guys are up to."
+        message="Hello, I am a sofwtware engineer and I am learning React JS looking forward to join zoho"
         timestamp="Today at 5:00PM"
         username="Nathan"
         image="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
