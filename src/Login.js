@@ -5,6 +5,8 @@ import { Button } from '@mui/material';
 import  { auth , provider } from './firebase';
 import { useStateValue } from './StateProvider';
 import { actionTypes } from './reducer';
+import GoogleButton from 'react-google-button';
+
 function Login() {
     const [state, dispatch] = useStateValue();
 
@@ -28,8 +30,9 @@ function Login() {
         <div className='login__logo'>
             <img src={logo} alt="logo" />
         </div>
-        <Button type='submit' onClick={()=>{signIn()}}>Sign in
-            </Button>
+
+        {/* {()=>{signIn()}} */}
+        <GoogleButton  onClick={signIn} />
     </div>
   )
 }
