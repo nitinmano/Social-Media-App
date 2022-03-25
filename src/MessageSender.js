@@ -5,6 +5,9 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { useStateValue } from "./StateProvider";
+import firebase from 'firebase/compat/app';
+import db from "./firebase";
+
 
 function MessageSender() {
 
@@ -14,7 +17,14 @@ function MessageSender() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("NMPro here");
+    db.collection("posts").add({
+      message: input,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      profilePic: user.photoURL,
+      username: user.displayName,
+      image: imageUrl,
+    });
+    console.log("Data Added");
     
     // Reset input
     setInput("");

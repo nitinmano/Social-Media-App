@@ -2,7 +2,6 @@ import React from "react";
 import "./Header.css";
 import logo from "./images/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
-import FlagIcon from "@mui/icons-material/Flag";
 import Avatar from "@mui/material/Avatar";
 import { IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -34,9 +33,7 @@ function Header() {
         <div className="header__option header__option--active">
           <HomeIcon fontSize="large" />
         </div>
-        <div className="header__option">
-          <FlagIcon fontSize="large" />
-        </div>
+        
       </div>
 
       <div className="header__right">
@@ -48,7 +45,7 @@ function Header() {
         <IconButton>
           <AddIcon />
         </IconButton>
-        <IconButton>
+        {/* <IconButton>
           <ForumIcon />
         </IconButton>
         <IconButton>
@@ -56,7 +53,7 @@ function Header() {
         </IconButton>
         <IconButton>
           <ExpandMoreIcon />
-        </IconButton>
+        </IconButton> */}
       </div>
     </div>
   );

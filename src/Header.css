@@ -62,6 +62,12 @@
   /* padding: 0 30px;
     cursor: pointer; */
 }
+.header__info:hover {
+  background-color: #eff2f5;
+  border-radius: 10px;
+  padding: 0 10px;
+  border-bottom: none;
+}
 .header__info > h4 {
   margin-left: 10px;
   font-weight: normal;

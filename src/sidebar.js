@@ -1,7 +1,7 @@
 import React from "react";
 import "./sidebar.css";
-import SidebarRow from "./SidebarRow";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+// import SidebarRow from "./SidebarRow";
+// import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 
 function sidebar() {
   return (
