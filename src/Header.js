@@ -5,18 +5,27 @@ import HomeIcon from "@mui/icons-material/Home";
 import Avatar from "@mui/material/Avatar";
 import { IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import ForumIcon from "@mui/icons-material/Forum";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import ForumIcon from "@mui/icons-material/Forum";
+// import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SearchIcon from "@mui/icons-material/Search";
 import { useStateValue } from "./StateProvider";
-
+import LogoutIcon from '@mui/icons-material/Logout';
+import { actionTypes } from './reducer';
 
 function Header() {
 
   const [{user}, dispatch] = useStateValue();
 
 
+  const signOut = () => {
+
+    localStorage.clear();
+    dispatch({
+        type: actionTypes.RESET_USER,
+        user: null,
+    });
+}
 
 
   return (
@@ -43,7 +52,7 @@ function Header() {
         </div>
 
         <IconButton>
-          <AddIcon />
+          <LogoutIcon onClick={signOut} />
         </IconButton>
         {/* <IconButton>
           <ForumIcon />

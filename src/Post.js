@@ -6,7 +6,10 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import { ExpandMoreOutlined } from "@mui/icons-material";
 
-function Post({ profilePic, image, username, timestamp, message }) {
+function Post({ profilePic, image, username, timestamp, message ,likeCount, comments}) {
+
+  
+
   return (
     <div className="post">
       <div className="post__top">
@@ -26,7 +29,7 @@ function Post({ profilePic, image, username, timestamp, message }) {
       <div className="post__options">
         <div className="post__option">
           <ThumbUpIcon />
-          <p>Like</p>
+          <p>{likeCount}</p>
         </div>
         <div className="post__option">
           <ChatBubbleOutlineIcon />

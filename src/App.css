@@ -1,6 +1,7 @@
 .app__body {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 .app {
   background-color: #f5f5f5;

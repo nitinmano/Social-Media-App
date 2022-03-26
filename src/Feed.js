@@ -33,6 +33,7 @@ function Feed() {
           timestamp={post.data.timestamp}
           message={post.data.message}
           image={post.data.image}
+          likeCount={post.data.likeCount}
         />
       ))}
     
