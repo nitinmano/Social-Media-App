@@ -10,39 +10,37 @@ import db from "./firebase";
 import { useStateValue } from './StateProvider';
 import firebase from 'firebase/compat/app';
 
-function Post({ id, profilePic, image, username, timestamp, message, likeCount, postId }) {
+function Post({ id, profilePic, image, username, timestamp, message, likeCount, dislikeCount }) {
 
   const [{ user }] = useStateValue();
+  // const [likes, setLikes] = useState(likeCount);
+  // const [dislikes, setDislikes] = useState(dislikeCount);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
 
-  
+
   useEffect(() => {
     let unsubscribe;
-
-    if (postId) {
+    if (id) {
       unsubscribe = db
         .collection("posts")
-        .doc(postId)
+        .doc(id)
         .collection("comments")
-        .orderBy("timestamp", "desc")
+        .orderBy('timestamp', 'desc')
         .onSnapshot((snapshot) => {
-          setComments(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              data: doc.data(),
-            }))
-          );
+          setComments(snapshot.docs.map((doc) => doc.data()));
         });
     }
+
     return () => {
       unsubscribe();
     };
-  }, [postId]);
+  }, [id]);
+
 
   const handleComment = (e) => {
     e.preventDefault();
-    db.collection("posts").doc(postId).collection("comments").add({
+    db.collection("posts").doc(id).collection("comments").add({
       text: comment,
       username: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -58,7 +56,7 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
 
   const handleDislike = () => {
     db.collection("posts").doc(id).update({
-      likeCount: likeCount - 1,
+      dislikeCount: dislikeCount + 1,
     });
   };
 
@@ -100,7 +98,7 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
         <div className="post__option"
           onClick={handleDislike}>
           <ThumbDownIcon />
-          <p>{likeCount}</p>
+          <p>{dislikeCount}</p>
         </div>
         <div className="post__option"
           onClick={deletePost} >
@@ -119,28 +117,28 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
       <div className="post__comments">
         {comments.map((comment) => (
           <p>
-            <strong> {comment.username}</strong>{comment.text}
+            <strong> {comment.username}</strong>:{comment.text}
           </p>
         ))}
       </div>
-        <form className="post_commentBox">
-          <input
-            className="post__input"
-            type="text"
-            placeholder="Add a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            className="post__button"
-            disabled={!comment}
-            type="submit"
-            onClick={handleComment}
-          >Post
-          </button>
+      <form className="post_commentBox">
+        <input
+          className="post__input"
+          type="text"
+          placeholder="Add a comment..."
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
 
-        </form>
-    
+        <button
+          className="post__button"
+          disabled={!comment}
+          type="submit"
+          onClick={handleComment}
+        >Post
+        </button>
+      </form>
+
     </div>
 
   );

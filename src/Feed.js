@@ -37,6 +37,7 @@ function Feed() {
           message={post.data.message}
           image={post.data.image}
           likeCount={post.data.likeCount}
+          dislikeCount={post.data.dislikeCount}
         />
       ))}
     

@@ -24,6 +24,7 @@ function MessageSender() {
       username: user.displayName,
       image: imageUrl,
       likeCount: 0,
+      dislikeCount: 0,
     });
     console.log("Data Added");
     
