@@ -117,7 +117,7 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
       <div className="post__comments">
         {comments.map((comment) => (
           <p>
-            <strong> {comment.username}</strong>:{comment.text}
+            <strong> {comment.username}</strong>: {comment.text}
           </p>
         ))}
       </div>
