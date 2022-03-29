@@ -1,14 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Post.css";
 import Avatar from "@mui/material/Avatar";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import ShareIcon from "@mui/icons-material/Share";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { ExpandMoreOutlined } from "@mui/icons-material";
+import db from "./firebase";
+import { useStateValue } from './StateProvider';
+import firebase from 'firebase/compat/app';
 
-function Post({ profilePic, image, username, timestamp, message ,likeCount, comments}) {
+function Post({ id, profilePic, image, username, timestamp, message, likeCount, postId }) {
+
+  const [{ user }] = useStateValue();
+  const [comments, setComments] = useState([]);
+  const [comment, setComment] = useState('');
 
   
+  useEffect(() => {
+    let unsubscribe;
+
+    if (postId) {
+      unsubscribe = db
+        .collection("posts")
+        .doc(postId)
+        .collection("comments")
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          setComments(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          );
+        });
+    }
+    return () => {
+      unsubscribe();
+    };
+  }, [postId]);
+
+  const handleComment = (e) => {
+    e.preventDefault();
+    db.collection("posts").doc(postId).collection("comments").add({
+      text: comment,
+      username: user.displayName,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setComment('');
+  };
+
+  const handleLike = () => {
+    db.collection("posts").doc(id).update({
+      likeCount: likeCount + 1,
+    });
+  };
+
+  const handleDislike = () => {
+    db.collection("posts").doc(id).update({
+      likeCount: likeCount - 1,
+    });
+  };
+
+
+  let deletePost = () => {
+    console.log(id);
+    if (username === user.displayName) {
+      if (window.confirm("Your post will be deleted")) {
+        db.collection("posts").doc(id).delete();
+        alert("Your post is successfully deleted");
+      }
+    } else {
+      alert("You don't have permission to delete " + username + "'s post");
+    }
+  };
 
   return (
     <div className="post">
@@ -27,13 +92,20 @@ function Post({ profilePic, image, username, timestamp, message ,likeCount, comm
         <img src={image} alt="" />
       </div>
       <div className="post__options">
-        <div className="post__option">
+        <div className="post__option"
+          onClick={handleLike}>
           <ThumbUpIcon />
           <p>{likeCount}</p>
         </div>
-        <div className="post__option">
-          <ChatBubbleOutlineIcon />
-          <p>Comment</p>
+        <div className="post__option"
+          onClick={handleDislike}>
+          <ThumbDownIcon />
+          <p>{likeCount}</p>
+        </div>
+        <div className="post__option"
+          onClick={deletePost} >
+          <DeleteIcon />
+          <p>Delete</p>
         </div>
         <div className="post__option">
           <ShareIcon />
@@ -44,7 +116,33 @@ function Post({ profilePic, image, username, timestamp, message ,likeCount, comm
           <ExpandMoreOutlined />
         </div>
       </div>
+      <div className="post__comments">
+        {comments.map((comment) => (
+          <p>
+            <strong> {comment.username}</strong>{comment.text}
+          </p>
+        ))}
+      </div>
+        <form className="post_commentBox">
+          <input
+            className="post__input"
+            type="text"
+            placeholder="Add a comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button
+            className="post__button"
+            disabled={!comment}
+            type="submit"
+            onClick={handleComment}
+          >Post
+          </button>
+
+        </form>
+    
     </div>
+
   );
 }
 

@@ -1,16 +1,26 @@
+.login__signup{
+  display: flex;
+  flex-direction: column;
+  
+}
 .login {
   background: #F7F7F7;  
   display: grid;
   place-items: center;
   height: 100vh;
+  flex-direction: column;
 }
-.login > button {
-  width: 15%;
+.login__container {
+  display: flex;
+  
+}
+.login__container > button {
+  
   background-color: #c82336;
   color: #eff2f5;
   
 }
-.login > button:hover {
+.login__container > button:hover {
   background-color: #65C18C;
   color: black;
 }

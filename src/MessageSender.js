@@ -18,11 +18,12 @@ function MessageSender() {
   const handleSubmit = (e) => {
     e.preventDefault();
     db.collection("posts").add({
-      message: input,
+      message: input.trim(),
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       profilePic: user.photoURL,
       username: user.displayName,
       image: imageUrl,
+      likeCount: 0,
     });
     console.log("Data Added");
     

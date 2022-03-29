@@ -1,31 +1,29 @@
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import "./App.css";
-import Header from "./Header";
-import Sidebar from "./sidebar";
-import Feed from "./Feed";
 import Login from "./Login";
-import {useStateValue} from "./StateProvider";
-
-function App() {
-  const [{ user },dispatch] = useStateValue();
-  
+import { useStateValue } from "./StateProvider";
+import HomePage from "./Homepage";
+const App = () => {
+  const [{ user }] = useStateValue();
 
   return (
-    // BEM naming convention
     <div className="app">
-      {!user?<Login/>:(
-        <>
-        {/* Header */}
-      <Header />
-      {/* App body */}
-      <div className="app__body">
-        {/* Sidebar */}
-        <Sidebar />
-        {/* feed */}
-        <Feed />
-      </div>
-      </>
-      )}
-      </div>
+      <Router>
+        <Routes>
+    // BEM naming convention
+
+          {!user ? (
+            <Route path="/" element={<Login />} />
+          ) : (
+            <>
+              <Route exact path="/homepage" element={<HomePage />} />
+              <Route exact path='/' element={<HomePage />} />
+            </>
+          )}
+
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

@@ -1,20 +1,21 @@
 import './Login.css';
 import React from 'react'
 import logo from "./images/logo.png";
-import { Button } from '@mui/material';
+
 import  { auth , provider } from './firebase';
 import { useStateValue } from './StateProvider';
 import { actionTypes } from './reducer';
 import GoogleButton from 'react-google-button';
 
 function Login() {
-    const [state, dispatch] = useStateValue();
+    const [{user}, dispatch] = useStateValue();
 
     const signIn=()=>{
         // Sign In
         auth
         .signInWithPopup(provider)
         .then(result => {
+            localStorage.setItem("name", JSON.stringify(result.user));
             dispatch({
                 type: actionTypes.SET_USER,
                 user: result.user,
