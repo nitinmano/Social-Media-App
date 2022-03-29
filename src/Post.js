@@ -20,9 +20,9 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
 
 
   useEffect(() => {
-    let unsubscribe;
+    let showComments ;
     if (id) {
-      unsubscribe = db
+      showComments = db
         .collection("posts")
         .doc(id)
         .collection("comments")
@@ -33,7 +33,7 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
     }
 
     return () => {
-      unsubscribe();
+      showComments();
     };
   }, [id]);
 
