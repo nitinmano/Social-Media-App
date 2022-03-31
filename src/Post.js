@@ -26,7 +26,7 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
         .collection("posts")
         .doc(id)
         .collection("comments")
-        .orderBy('timestamp', 'desc')
+        .orderBy('timestamp')
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import "./MessageSender.css";
-import VideoCallIcon from "@mui/icons-material/VideoCall";
-import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
-import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+// import VideoCallIcon from "@mui/icons-material/VideoCall";
+// import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+// import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { useStateValue } from "./StateProvider";
 import firebase from 'firebase/compat/app';
 import db from "./firebase";
@@ -13,7 +13,7 @@ function MessageSender() {
 
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   const handleSubmit = (e) => {
     e.preventDefault();
