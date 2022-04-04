@@ -10,17 +10,16 @@ import db from "./firebase";
 import { useStateValue } from './StateProvider';
 import firebase from 'firebase/compat/app';
 
-function Post({ id, profilePic, image, username, timestamp, message, likeCount, dislikeCount }) {
+function Post({ id, profilePic, image, username, timestamp, message, likeCount,
+   dislikeCount, likedUser,dislikedUser }) {
 
   const [{ user }] = useStateValue();
-  // const [likes, setLikes] = useState(likeCount);
-  // const [dislikes, setDislikes] = useState(dislikeCount);
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
 
 
   useEffect(() => {
-    let showComments ;
+    let showComments;
     if (id) {
       showComments = db
         .collection("posts")
@@ -38,6 +37,9 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
   }, [id]);
 
 
+
+
+
   const handleComment = (e) => {
     e.preventDefault();
     db.collection("posts").doc(id).collection("comments").add({
@@ -47,17 +49,34 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount, 
     });
     setComment('');
   };
-
   const handleLike = () => {
-    db.collection("posts").doc(id).update({
-      likeCount: likeCount + 1,
-    });
+    if (likedUser.includes(user.displayName)) {
+      db.collection("posts").doc(id).update({
+        likeCount: likeCount - 1,
+        likedUser: firebase.firestore.FieldValue.arrayRemove(user.displayName),
+      });
+    }
+    else {
+      db.collection("posts").doc(id).update({
+        likeCount: likeCount + 1,
+        likedUser: likedUser.concat(user.displayName),
+      });
+    }
   };
 
   const handleDislike = () => {
-    db.collection("posts").doc(id).update({
-      dislikeCount: dislikeCount + 1,
+    if (dislikedUser.includes(user.displayName)) {
+      db.collection("posts").doc(id).update({
+        dislikeCount: dislikeCount - 1,
+        dislikedUser: firebase.firestore.FieldValue.arrayRemove(user.displayName),
+      });
+    }
+    else {
+      db.collection("posts").doc(id).update({
+        dislikeCount: dislikeCount + 1,
+        dislikedUser: dislikedUser.concat(user.displayName),
     });
+  }
   };
 
 

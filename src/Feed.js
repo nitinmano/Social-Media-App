@@ -38,6 +38,8 @@ function Feed() {
           image={post.data.image}
           likeCount={post.data.likeCount}
           dislikeCount={post.data.dislikeCount}
+          likedUser={post.data.likedUser}
+          dislikedUser={post.data.dislikedUser}
         />
       ))}
     

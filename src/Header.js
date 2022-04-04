@@ -16,6 +16,7 @@ import { actionTypes } from './reducer';
 function Header() {
 
   const [{user}, dispatch] = useStateValue();
+  const [search, setSearch] = React.useState('');
 
 
   const signOut = () => {
@@ -27,15 +28,17 @@ function Header() {
     });
 }
 
+ 
+
+
+
 
   return (
     <div className="header">
       <div className="header__left">
         <img src={logo} alt="logo" />
-        <div className="header__input">
-          <SearchIcon />
-          <input type="text" placeholder="Search" />
-        </div>
+        {/* <div className="header__input">
+        </div> */}
       </div>
 
       <div className="header__center">
@@ -54,15 +57,6 @@ function Header() {
         <IconButton>
           <LogoutIcon onClick={signOut} />
         </IconButton>
-        {/* <IconButton>
-          <ForumIcon />
-        </IconButton>
-        <IconButton>
-          <NotificationsActiveIcon />
-        </IconButton>
-        <IconButton>
-          <ExpandMoreIcon />
-        </IconButton> */}
       </div>
     </div>
   );
