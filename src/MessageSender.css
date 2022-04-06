@@ -59,3 +59,48 @@
   border-radius: 20px;
 }
 
+@media only screen and (max-width: 768px) {
+
+
+  .feed{
+    padding: 15px;
+  }
+  .messageSender{
+    width: 100%;
+  }
+
+  .messageSender__top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 5px;
+    
+  }
+  .messageSender__top>form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .messageSender__top>form>input {
+      padding: 10px;
+      margin: 10px;
+      width: 90%;
+  }
+
+  .messageSender__top>form>button {
+      display:block;
+      background-color: #c82336;
+      border-radius: 999px;
+      color: white;
+      width: 50%;
+  }
+
+  .messageSender {
+      margin: 10px 20px;
+  }
+}

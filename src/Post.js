@@ -109,14 +109,14 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount,
         <img src={image} alt="" />
       </div>
       <div className="post__options">
-        <div className="post__option"
+        <div className={`post__option `} 
           onClick={handleLike}>
-          <ThumbUpIcon />
+          <ThumbUpIcon className={`${likedUser.includes(user.displayName) ? 'post__option--active' : ''}`} />
           <p>{likeCount}</p>
         </div>
-        <div className="post__option"
+        <div className={`post__option `}
           onClick={handleDislike}>
-          <ThumbDownIcon />
+          <ThumbDownIcon className={`${dislikedUser.includes(user.displayName) ? 'post__option--active' : ''}`} />
           <p>{dislikeCount}</p>
         </div>
         <div className="post__option"
@@ -124,14 +124,14 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount,
           <DeleteIcon />
           <p>Delete</p>
         </div>
-        <div className="post__option">
+        {/* <div className="post__option">
           <ShareIcon />
           <p>Share</p>
-        </div>
-        <div className="post__option">
-          {/* <AccountCircleIcon /> */}
+        </div> */}
+        {/* <div className="post__option">
+          <AccountCircleIcon />
           <ExpandMoreOutlined />
-        </div>
+        </div> */}
       </div>
       <div className="post__comments">
         {comments.map((comment) => (

@@ -50,6 +50,17 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+
+.post__option--active{
+
+    color: #c82336;
+    cursor: pointer;
+}
+
+
+
+.post__option
 .post__option {
     display: flex;
     align-items: center;
@@ -91,4 +102,21 @@
 .post__comments{
     padding: 10px; 
     font-weight: lighter;
+}
+
+@media only screen and (max-width: 768px) {
+    .post {
+        width: 100%;
+    }
+
+    .post__commentBox{
+        width: 90%;
+    }
+    .post__input{
+        width: 80%;
+        font-size: 0.8em;
+    }
+    .post__comments{
+        font-size: 0.8em;
+    }
 }

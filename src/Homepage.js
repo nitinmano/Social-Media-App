@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from "./Header";
-import Sidebar from "./sidebar";
 import Feed from "./Feed";
 
 function HomePage() {
@@ -11,7 +10,6 @@ function HomePage() {
       {/* App body */}
       <div className="homePage__body">
         {/* Sidebar */}
-        <Sidebar />
         {/* feed */}
         <Feed />
       </div>
