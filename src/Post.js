@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Post.css";
+import "./css/Post.css";
 import Avatar from "@mui/material/Avatar";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import ShareIcon from "@mui/icons-material/Share";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ExpandMoreOutlined } from "@mui/icons-material";
 import db from "./firebase";
 import { useStateValue } from './StateProvider';
 import firebase from 'firebase/compat/app';
@@ -119,19 +117,11 @@ function Post({ id, profilePic, image, username, timestamp, message, likeCount,
           <ThumbDownIcon className={`${dislikedUser.includes(user.displayName) ? 'post__option--active' : ''}`} />
           <p>{dislikeCount}</p>
         </div>
-        <div className="post__option"
+        <div className="post__option__delete"
           onClick={deletePost} >
           <DeleteIcon />
           <p>Delete</p>
         </div>
-        {/* <div className="post__option">
-          <ShareIcon />
-          <p>Share</p>
-        </div> */}
-        {/* <div className="post__option">
-          <AccountCircleIcon />
-          <ExpandMoreOutlined />
-        </div> */}
       </div>
       <div className="post__comments">
         {comments.map((comment) => (

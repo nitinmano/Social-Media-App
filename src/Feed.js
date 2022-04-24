@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import "./feed.css";
+import "./css/feed.css";
 import MessageSender from "./MessageSender";
 import Post from "./Post";
 import db from "./firebase";
@@ -23,8 +23,6 @@ function Feed() {
   
   return (
     <div className="feed">
-      {/* StoryReels */}
-      {/* Post Tweets */}
       <MessageSender />
 
       {posts.map((post) => (

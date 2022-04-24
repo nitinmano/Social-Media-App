@@ -1,14 +1,9 @@
 import React from "react";
-import "./Header.css";
+import "./css/Header.css";
 import logo from "./images/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import Avatar from "@mui/material/Avatar";
 import { IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-// import ForumIcon from "@mui/icons-material/Forum";
-// import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SearchIcon from "@mui/icons-material/Search";
 import { useStateValue } from "./StateProvider";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { actionTypes } from './reducer';

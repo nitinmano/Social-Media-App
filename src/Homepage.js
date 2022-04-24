@@ -9,8 +9,7 @@ function HomePage() {
       <Header />
       {/* App body */}
       <div className="homePage__body">
-        {/* Sidebar */}
-        {/* feed */}
+  
         <Feed />
       </div>
     </div>
